@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.luxzi.chunklim.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "refmap": "chunklim.refmap.json",
+  "mixins": [
+    "MixinChunkStatus"
+  ],
+  "client": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
