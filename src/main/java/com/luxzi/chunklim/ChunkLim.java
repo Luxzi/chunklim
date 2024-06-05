@@ -4,11 +4,7 @@ import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
 
-import net.minecraft.server.MinecraftServer;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.TickEvent.ServerTickEvent;
-import net.minecraftforge.event.level.ChunkEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -17,7 +13,6 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.server.ServerLifecycleHooks;
 
 @Mod(ChunkLim.MODID)
 public class ChunkLim
@@ -45,14 +40,5 @@ public class ChunkLim
     public void onServerStarting(ServerStartingEvent event)
     {
         LOGGER.info("serverStart complete");
-    }
-
-    @SubscribeEvent
-    public void loadChunk(ChunkEvent.Load event)
-    {
-        if (ServerLifecycleHooks.getCurrentServer().isReady() && event.isNewChunk())
-        {
-            LOGGER.info("Can't keep up, limiting chunk generation!");
-        }
     }
 }
