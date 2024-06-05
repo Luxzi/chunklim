@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
 
+import net.minecraft.server.MinecraftServer;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -13,12 +14,14 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.server.ServerLifecycleHooks;
 
 @Mod(ChunkLim.MODID)
 public class ChunkLim
 {
     public static final String MODID = "chunklim";
     private static final Logger LOGGER = LogUtils.getLogger();
+    public static MinecraftServer SERVER;
     
     public ChunkLim()
     {
@@ -40,5 +43,6 @@ public class ChunkLim
     public void onServerStarting(ServerStartingEvent event)
     {
         LOGGER.info("serverStart complete");
+        SERVER = ServerLifecycleHooks.getCurrentServer();
     }
 }
