@@ -22,8 +22,6 @@ public class ChunkLim
     public static final String MODID = "chunklim";
     public static final Logger LOGGER = LogUtils.getLogger();
     public static MinecraftServer SERVER;
-
-    public static final long timeout = 200;
     
     public ChunkLim()
     {

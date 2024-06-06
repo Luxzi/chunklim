@@ -1,6 +1,7 @@
 package com.luxzi.chunklim.mixin;
 
 import com.luxzi.chunklim.ChunkLim;
+import com.luxzi.chunklim.Config;
 import com.luxzi.chunklim.TickRate;
 import com.mojang.datafixers.util.Either;
 import net.minecraft.server.level.ChunkHolder;
@@ -29,10 +30,10 @@ public class MixinChunkStatus {
             return;
         }
 
-        if (TickRate.getTickRate() <= 10.0 && ChunkLim.SERVER.isReady()) {
-            try {
-                ChunkLim.LOGGER.info("[ChunkLim] Delaying chunk load by " + ChunkLim.timeout + "ms...");
-                TimeUnit.MILLISECONDS.sleep(ChunkLim.timeout);
+        if (TickRate.getTickRate() <= Config.triggerTps && ChunkLim.SERVER.isReady() && Config.enabled) {
+            try {   
+                ChunkLim.LOGGER.info("[ChunkLim] Delaying chunk load by " + Config.chunkDelay + "ms...");
+                TimeUnit.MILLISECONDS.sleep((long)Config.chunkDelay);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
