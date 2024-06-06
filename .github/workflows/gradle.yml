@@ -46,7 +46,7 @@ jobs:
     - name: Create release
       uses: ncipollo/release-action@v1
       with:
-        allowUpdates: false
+        allowUpdates: true
         generateReleaseNotes: true
         prerelease: true
         commit: dev
