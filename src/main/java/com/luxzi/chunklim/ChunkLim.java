@@ -48,13 +48,4 @@ public class ChunkLim
         LOGGER.info("serverStart complete");
         SERVER = ServerLifecycleHooks.getCurrentServer();
     }
-
-    @SubscribeEvent
-    public void onTick(ServerTickEvent event)
-    {
-        if (SERVER.getTickCount() % 20 == 0)
-        {
-            LOGGER.info("TPS: " + TickRate.getTickRate());
-        }
-    }
 }
