@@ -25,6 +25,10 @@ import java.util.function.Function;
 public class MixinChunkStatus {
     @Inject(method = "generate", at = @At("HEAD"), cancellable = true)
     private void generate(Executor p_283276_, ServerLevel p_281420_, ChunkGenerator p_281836_, StructureTemplateManager p_281305_, ThreadedLevelLightEngine p_282570_, Function<ChunkAccess, CompletableFuture<Either<ChunkAccess, ChunkHolder.ChunkLoadingFailure>>> p_283114_, List<ChunkAccess> p_282723_, CallbackInfoReturnable<CompletableFuture<Either<ChunkAccess, ChunkHolder.ChunkLoadingFailure>>> cir) {
+        if (ChunkLim.SERVER == null) {
+            return;
+        }
+
         if (TickRate.getTickRate() < 10.0 && ChunkLim.SERVER.isReady()) {
             try {
                 TimeUnit.MILLISECONDS.sleep(200);

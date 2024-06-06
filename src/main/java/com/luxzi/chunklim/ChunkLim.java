@@ -8,6 +8,7 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.ServerChatEvent;
+import net.minecraftforge.event.TickEvent.ServerTickEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -46,5 +47,14 @@ public class ChunkLim
     {
         LOGGER.info("serverStart complete");
         SERVER = ServerLifecycleHooks.getCurrentServer();
+    }
+
+    @SubscribeEvent
+    public void onTick(ServerTickEvent event)
+    {
+        if (SERVER.getTickCount() % 20 == 0)
+        {
+            LOGGER.info("TPS: " + TickRate.getTickRate());
+        }
     }
 }
