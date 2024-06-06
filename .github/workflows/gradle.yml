@@ -53,6 +53,7 @@ jobs:
         name: chunklim-dev
         tag: dev
         artifacts: build/libs/*.jar
+      if: github.event_name != 'pull_request'
 
   dependency-submission:
 
