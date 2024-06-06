@@ -10,22 +10,22 @@ public class Config
 {
     private static final ForgeConfigSpec.Builder BUILDER = new ForgeConfigSpec.Builder();
 
-    private static final ForgeConfigSpec.ConfigValue<Double> CHUNK_DELAY = BUILDER
+    public static final ForgeConfigSpec.ConfigValue<Double> CHUNK_DELAY = BUILDER
         .comment("Dicates how much new chunk generation should be delayed, in milliseconds.")
         .define("chunkDelay", 200D);
 
-    private static final ForgeConfigSpec.ConfigValue<Integer> TRIGGER_TPS = BUILDER
+    public static final ForgeConfigSpec.ConfigValue<Double> TRIGGER_TPS = BUILDER
         .comment("At what TPS and below chunk delaying will trigger")
-        .define("triggerTps", 10);
+        .define("triggerTps", 10.0D);
 
-    private static final ForgeConfigSpec.BooleanValue ENABLED = BUILDER
+    public static final ForgeConfigSpec.BooleanValue ENABLED = BUILDER
         .comment("Enables and disables this mod")
         .define("enabled", true);
 
     static final ForgeConfigSpec SPEC = BUILDER.build();
 
     public static double chunkDelay;
-    public static int triggerTps;
+    public static double triggerTps;
     public static boolean enabled;
 
     @SubscribeEvent
