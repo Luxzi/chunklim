@@ -31,7 +31,7 @@ public class ChunkLim
         
         MinecraftForge.EVENT_BUS.register(this);
         
-        ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, Config.SPEC, MODID + ".toml");
+        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Config.SPEC, MODID + ".toml");
     }
     
     private void commonSetup(final FMLCommonSetupEvent event)
