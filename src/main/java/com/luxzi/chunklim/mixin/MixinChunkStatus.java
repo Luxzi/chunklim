@@ -31,8 +31,8 @@ public class MixinChunkStatus {
 
         if (TickRate.getTickRate() <= 10.0 && ChunkLim.SERVER.isReady()) {
             try {
-                System.out.println("[ChunkLim] Delaying chunk...");
-                TimeUnit.MILLISECONDS.sleep(200);
+                ChunkLim.LOGGER.info("[ChunkLim] Delaying chunk load by " + ChunkLim.timeout + "ms...");
+                TimeUnit.MILLISECONDS.sleep(ChunkLim.timeout);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
