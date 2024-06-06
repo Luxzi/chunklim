@@ -44,14 +44,13 @@ jobs:
         path: build/libs/*.jar
 
     - name: Create release
-      uses: ncipollo/release-action@v1
+      uses: softprops/action-gh-release@v2
       with:
-        allowUpdates: true
-        generateReleaseNotes: true
+        body: development release
         prerelease: true
-        name: chunklim-dev git-${GITHUB_SHA::6}
-        tag: dev
-        artifacts: ChunkLim.zip
+        name: chunklim-dev
+        tag_name: dev
+        files: ChunkLim.zip
 
   dependency-submission:
 
