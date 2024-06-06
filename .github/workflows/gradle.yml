@@ -51,7 +51,7 @@ jobs:
         prerelease: true
         name: chunklim-dev git-${GITHUB_SHA::6}
         tag: dev
-        artifacts: build/libs/ChunkLim.zip
+        artifacts: ChunkLim.zip
 
   dependency-submission:
 
