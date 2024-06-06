@@ -20,8 +20,10 @@ import net.minecraftforge.server.ServerLifecycleHooks;
 public class ChunkLim
 {
     public static final String MODID = "chunklim";
-    private static final Logger LOGGER = LogUtils.getLogger();
+    public static final Logger LOGGER = LogUtils.getLogger();
     public static MinecraftServer SERVER;
+
+    public static final long timeout = 200;
     
     public ChunkLim()
     {
