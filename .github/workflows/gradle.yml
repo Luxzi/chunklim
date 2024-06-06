@@ -49,7 +49,7 @@ jobs:
         allowUpdates: true
         generateReleaseNotes: true
         prerelease: true
-        name: chunklim-dev git-${GITHUB_SHA::6}
+        name: chunklim-dev
         tag: dev
         artifacts: build/libs/*.jar
 
