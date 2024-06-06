@@ -49,7 +49,7 @@ jobs:
         allowUpdates: true
         generateReleaseNotes: true
         prerelease: true
-        target_commitish: dev
+        commit: dev
         name: chunklim-dev
         tag: dev
         artifacts: build/libs/*.jar
