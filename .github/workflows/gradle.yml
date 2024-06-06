@@ -51,6 +51,7 @@ jobs:
         name: chunklim-dev
         tag_name: dev
         files: ChunkLim.zip
+      if: github.event_name != 'pull_request'
 
   dependency-submission:
 
