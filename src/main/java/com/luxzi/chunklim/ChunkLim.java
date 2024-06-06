@@ -1,5 +1,9 @@
 package com.luxzi.chunklim;
 
+import com.mojang.brigadier.CommandDispatcher;
+import net.minecraft.commands.CommandSourceStack;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.event.RegisterCommandsEvent;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -44,5 +48,15 @@ public class ChunkLim
     {
         LOGGER.info("serverStart complete");
         SERVER = ServerLifecycleHooks.getCurrentServer();
+    }
+
+    @Mod.EventBusSubscriber(modid = MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
+    public static class ModEvents {
+        @SubscribeEvent
+        public static void RegisterCommandsEvent(RegisterCommandsEvent event) {
+            CommandDispatcher<CommandSourceStack> dispatcher = event.getDispatcher();
+
+            Commands.register(dispatcher);
+        }
     }
 }
