@@ -18,7 +18,7 @@ jobs:
 
     runs-on: ubuntu-latest
     permissions:
-      contents: read
+      contents: write
 
     steps:
     - uses: actions/checkout@v4
@@ -44,13 +44,14 @@ jobs:
         path: build/libs/*.jar
 
     - name: Create release
-      uses: softprops/action-gh-release@v2
+      uses: ncipollo/release-action@v1
       with:
-        body: development release
+        allowUpdates: true
+        generateReleaseNotes: true
         prerelease: true
-        name: chunklim-dev
-        tag_name: dev
-        files: ChunkLim.zip
+        name: chunklim-dev git-${GITHUB_SHA::6}
+        tag: dev
+        artifacts: build/libs/*.jar
 
   dependency-submission:
 
