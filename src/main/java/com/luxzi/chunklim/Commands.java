@@ -58,9 +58,13 @@ public class Commands {
                 )
                 .executes(ctx -> {
                     ctx.getSource().sendSystemMessage(Component.literal("[ChunkLim] Current trigger TPS: " + Config.triggerTps));
-                        return Command.SINGLE_SUCCESS;
+                    return Command.SINGLE_SUCCESS;
                 })
             )
+            .executes(ctx -> {
+                ctx.getSource().sendSystemMessage(Component.literal("[ChunkLim] Help Page:\n/chunklim enable - Enables ChunkLim\n/chunklim disable - Disables ChunkLim\n/chunklim delay [delay] - Sets the delay in milliseconds\n/chunklim triggerTps [triggerTps] - Sets the trigger TPS\n"));
+                return Command.SINGLE_SUCCESS;
+            })
         );
     }
 }
