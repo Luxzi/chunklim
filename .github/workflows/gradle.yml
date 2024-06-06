@@ -35,13 +35,23 @@ jobs:
 
     - name: Build with Gradle Wrapper
       run: ./gradlew jar
-
+      
     # Bundles and uploads build artifacts
     - name: Upload build artifacts
       uses: actions/upload-artifact@v4
       with:
         name: ChunkLim
         path: build/libs/*.jar
+
+    - name: Create release
+      uses: ncipollo/release-action@v1
+      with:
+        allowUpdates: true
+        generateReleaseNotes: true
+        prerelease: true
+        name: chunklim-dev git-${GITHUB_SHA::6}
+        tag: dev
+        artifacts: build/libs/*.jar
 
   dependency-submission:
 
